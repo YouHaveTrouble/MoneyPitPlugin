@@ -1,4 +1,4 @@
-name: MoneyPitPlugin
+name: MoneyPit
 version: '${project.version}'
 main: me.youhavetrouble.moneypit.plugin.MoneyPit
 api-version: '1.13'
