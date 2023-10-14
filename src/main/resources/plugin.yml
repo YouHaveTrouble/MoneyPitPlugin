@@ -1,0 +1,12 @@
+name: MoneyPitPlugin
+version: '${project.version}'
+main: me.youhavetrouble.moneypit.MoneyPit
+api-version: '1.13'
+load: STARTUP
+authors: [YouHaveTrouble]
+commands:
+  moneypit:
+    description: MoneyPit command
+    usage: /<command>
+    permission: moneypit.command
+    permission-message: You do not have permission to use this command.
