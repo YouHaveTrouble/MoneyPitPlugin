@@ -1,10 +1,11 @@
-package me.youhavetrouble;
+package me.youhavetrouble.moneypit.plugin;
 
 import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
 
 public final class MoneyPit extends JavaPlugin {
@@ -16,13 +17,12 @@ public final class MoneyPit extends JavaPlugin {
 
         try (InputStream stream = MoneyPit.class.getResourceAsStream("api-version.txt")) {
             if (stream != null) {
-                 this.apiVersion = new Scanner(stream, "UTF-8").useDelimiter("\\A").next();
+                 this.apiVersion = new Scanner(stream, StandardCharsets.UTF_8).useDelimiter("\\A").next();
             } else {
                 getLogger().warning("Could not read api-version!");
             }
-
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            getLogger().warning("Could not read api-version!");
         }
 
         PluginCommand command = getCommand("moneypit");

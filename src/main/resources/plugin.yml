@@ -1,6 +1,6 @@
 name: MoneyPitPlugin
 version: '${project.version}'
-main: me.youhavetrouble.moneypit.MoneyPit
+main: me.youhavetrouble.moneypit.plugin.MoneyPit
 api-version: '1.13'
 load: STARTUP
 authors: [YouHaveTrouble]

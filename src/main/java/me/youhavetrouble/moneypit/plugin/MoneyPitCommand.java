@@ -1,4 +1,4 @@
-package me.youhavetrouble;
+package me.youhavetrouble.moneypit.plugin;
 
 import me.youhavetrouble.moneypit.Economy;
 import org.bukkit.command.Command;
@@ -21,12 +21,10 @@ public class MoneyPitCommand implements TabExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-
         if (args.length == 0) {
             sendInfo(sender);
             return true;
         }
-
         return false;
     }
 
@@ -46,15 +44,15 @@ public class MoneyPitCommand implements TabExecutor {
     }
 
     private String getRegisteredProviders() {
-        Collection<RegisteredServiceProvider<Economy>> registrations = plugin.getServer().getServicesManager().getRegistrations(Economy.class);
+        Collection<RegisteredServiceProvider<Economy>> registrations = plugin.getServer()
+                .getServicesManager()
+                .getRegistrations(Economy.class);
 
-        if (registrations.isEmpty()) {
-            return "No economy providers registered!";
-        }
+        if (registrations.isEmpty()) return "No economy providers registered!";
 
         List<String> providers = new ArrayList<>(registrations.size());
         for (RegisteredServiceProvider<Economy> provider : registrations) {
-            String name = String.format("%s (%s)", provider.getPlugin().getName(), provider.getPlugin().getDescription().getVersion());
+            String name = "%s (%s)".formatted(provider.getPlugin().getName(), provider.getPlugin().getDescription().getVersion());
             providers.add(name);
         }
         return String.join(", ", providers);
