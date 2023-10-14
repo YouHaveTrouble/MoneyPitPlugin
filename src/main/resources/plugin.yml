@@ -10,3 +10,7 @@ commands:
     usage: /<command>
     permission: moneypit.command
     permission-message: You do not have permission to use this command.
+permissions:
+  moneypit.command:
+    default: op
+    description: "Allows access to the /moneypit command."
