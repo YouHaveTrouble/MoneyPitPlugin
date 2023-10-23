@@ -15,14 +15,14 @@ public final class MoneyPit extends JavaPlugin {
     @Override
     public void onEnable() {
 
-        try (InputStream stream = MoneyPit.class.getResourceAsStream("api-version.txt")) {
+        try (InputStream stream = MoneyPit.class.getResourceAsStream("/api-version.txt")) {
             if (stream != null) {
-                 this.apiVersion = new Scanner(stream, StandardCharsets.UTF_8).useDelimiter("\\A").next();
+                 this.apiVersion = new Scanner(stream, StandardCharsets.UTF_8).next();
             } else {
-                getLogger().warning("Could not read api-version!");
+                getLogger().warning("Could not read api-version! (failed to read file)");
             }
         } catch (IOException e) {
-            getLogger().warning("Could not read api-version!");
+            getLogger().warning("Could not read api-version! (IOException)");
         }
 
         PluginCommand command = getCommand("moneypit");

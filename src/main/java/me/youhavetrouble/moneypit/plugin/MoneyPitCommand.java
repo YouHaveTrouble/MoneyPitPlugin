@@ -52,7 +52,11 @@ public class MoneyPitCommand implements TabExecutor {
 
         List<String> providers = new ArrayList<>(registrations.size());
         for (RegisteredServiceProvider<Economy> provider : registrations) {
-            String name = "%s (%s)".formatted(provider.getPlugin().getName(), provider.getPlugin().getDescription().getVersion());
+            String name = "%s (%s %s)".formatted(
+                    provider.getPlugin().getName(),
+                    provider.getPlugin().getDescription().getName(),
+                    provider.getPlugin().getDescription().getVersion()
+            );
             providers.add(name);
         }
         return String.join(", ", providers);
